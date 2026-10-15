@@ -1,0 +1,81 @@
+<title>Dating the Surahs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Amiri:wght@400;700&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: a reading column for long scholarly prose, with a sticky section bar; verse-end ornament (۝) separates the four documents. */
+:root {
+  --paper: #fbfbf8;
+  --ink: #1d2230;
+  --ink-soft: #4a5063;
+  --rule: #d9dbe0;
+  --wash: #eef0f5;
+  --accent: #9b2c2c;      /* madder red, as in manuscript verse markers */
+  --link: #1f4f8f;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --font-arabic: "Amiri", "Geeza Pro", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15171d; --ink: #e6e7ea; --ink-soft: #a9aebb; --rule: #2e323d; --wash: #1e212a;
+    --accent: #e07a6b; --link: #8fb4ec; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15171d; --ink: #e6e7ea; --ink-soft: #a9aebb; --rule: #2e323d; --wash: #1e212a;
+  --accent: #e07a6b; --link: #8fb4ec; color-scheme: dark;
+}
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.62; }
+.wrap { max-width: 44rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.masthead { padding-block: 3.5rem 1.5rem; }
+.masthead h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.masthead .ar { font-family: var(--font-arabic); font-size: 1.6rem; color: var(--accent); margin: 0 0 .25rem; direction: rtl; text-align: left; }
+.masthead .lede { color: var(--ink-soft); max-width: 36rem; margin: .9rem 0 0; }
+.masthead .meta { font-family: var(--font-display); font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+.masthead .meta a { color: var(--link); }
+nav.sections { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-block: 1px solid var(--rule); }
+nav.sections .wrap { display: flex; flex-wrap: wrap; gap: .2rem 1.4rem; padding-block: .6rem; }
+nav.sections a { font-family: var(--font-display); font-weight: 500; font-size: .92rem; color: var(--ink); text-decoration: none; padding-block: .15rem; border-bottom: 2px solid transparent; }
+nav.sections a:hover, nav.sections a:focus-visible { border-bottom-color: var(--accent); outline: none; }
+section.doc { padding-block: 2.5rem 1rem; scroll-margin-top: 3.5rem; }
+section.doc + section.doc::before { content: "۝"; display: block; text-align: center; font-family: var(--font-arabic); font-size: 2.2rem; color: var(--accent); margin-bottom: 1.5rem; }
+.eyebrow { font-family: var(--font-display); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 .3rem; }
+h2, h3, h4, h5 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; scroll-margin-top: 3.5rem; }
+h2 { font-size: 2rem; font-weight: 700; margin: 0 0 1.2rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.35rem; font-weight: 700; margin: 2.4rem 0 .6rem; }
+h4 { font-size: 1.08rem; font-weight: 500; margin: 1.8rem 0 .4rem; }
+p, ul, ol { margin: 0 0 1rem; }
+li { margin-bottom: .35rem; }
+a { color: var(--link); text-underline-offset: 2px; }
+strong { font-weight: 600; }
+code { font-family: var(--font-mono); font-size: .86em; background: var(--wash); padding: .08em .3em; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: var(--wash); padding: .9rem 1rem; border-radius: 4px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.table-wrap { overflow-x: auto; margin: 1.2rem 0 1.4rem; }
+table { border-collapse: collapse; font-size: .9rem; line-height: 1.4; font-variant-numeric: tabular-nums; min-width: 100%; }
+th, td { text-align: left; padding: .45rem .7rem .45rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--font-display); font-weight: 500; font-size: .82rem; color: var(--ink-soft); border-bottom-color: var(--ink-soft); }
+figure.plate { margin: 1.5rem 0 1.8rem; }
+figure.plate img { display: block; width: 100%; max-width: 100%; height: auto; background: #ffffff; border: 1px solid var(--rule); border-radius: 3px; }
+figure.plate figcaption { font-size: .86rem; color: var(--ink-soft); margin-top: .5rem; }
+blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--ink-soft); }
+footer { color: var(--ink-soft); font-size: .86rem; padding-block: 2rem 3rem; border-top: 1px solid var(--rule); margin-top: 2rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="ar" lang="ar">ترتيب النزول</p>
+    <h1>Dating the Surahs</h1>
+    <p class="lede">In what order were the Qur'an's 114 surahs first proclaimed? A course reader for HCSB03 (University of Toronto Scarborough) on the scholarship, the methods, and what a careful computational test of the competing chronologies does and does not show.</p>
+    <div class="meta"><span>HCSB03 · 2026</span><span>Prepared for Prof. Suleyman Dost's chronology project</span><a href="{{REPO}}">Code and notebooks on GitHub</a></div>
+  </div>
+</header>
+<nav class="sections" aria-label="Documents"><div class="wrap">{{NAV}}</div></nav>
+<main class="wrap">
+{{SECTIONS}}
+<footer>Built from the repository's <code>docs/</code> folder. Numbers come from <code>uv run surahs-experiments</code>; see the Results section for sources of every table.</footer>
+</main>
