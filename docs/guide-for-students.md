@@ -13,7 +13,7 @@ So in what order were they proclaimed? Muslim scholars asked this question very 
 
 Knowing the order matters to historians because it lets you read the text as a record of change. You can watch how its themes, its audience and its language develop over twenty-odd years. It matters to Muslim jurists for a related reason: when two verses seem to give different rulings, the later one may be taken to modify the earlier.
 
-Prof. Suleyman Dost's current project, "Bringing Order to Chaos: A Study of the Qur'an's Inner Chronology", tests whether measurable features of the text can sort out this order. It looks at three features: how long the verses are, which names for God are used, and where words of possibly foreign origin occur. It uses correlation and regression, two basic statistical tools. This repository is a place to practise that kind of work and to see where it can go wrong.
+Prof. Suleyman Dost has already proposed one answer. In chapter 3 of his book *Before the Qur'an* (2026) he divides the Qur'an into three phases according to how it names God (section 3 below). His current project, "Bringing Order to Chaos: A Study of the Qur'an's Inner Chronology", tests whether measurable features of the text can sort out the order more fully. It looks at three features: how long the verses are, which names for God are used, and where words of possibly foreign origin occur. It uses correlation and regression, two basic statistical tools. This repository is a place to practise that kind of work and to see where it can go wrong.
 
 A note on perspective. For many Muslims the Qur'an is the word of God, and its "date" is the moment of revelation. The methods here belong to *historical-critical* scholarship, which studies the text with the same tools historians use on any other document. That is one academic way of asking questions. It does not settle questions of faith, and you should be careful to say what your evidence shows rather than more.
 
@@ -36,6 +36,16 @@ If you read the Qur'an in order, you can't miss it: the surahs Islamic tradition
 - **Mehdi Bazargan**, an Iranian engineer and later prime minister, divided the Qur'an into 194 blocks and ordered them by verse length (1970s).
 - **Behnam Sadeghi** (2011) took Bazargan's blocks and asked whether *other* features, chosen independently, change smoothly in the same order. The features were the frequencies of the commonest little words, of medium-frequency words and of rare words. They did. If one ordering lines up several unrelated measures at once, chance becomes a poor explanation and a real development over time a better one.
 - **Nicolai Sinai** (2017) measured **mean verse length (MVL)** for each surah and showed that many other features line up with it. Oaths ("By the dawn!") appear only in short-verse surahs. References to the "hypocrites" appear only in long-verse ones. He is also careful about the limits: two surahs with similar MVL can't be put in order by MVL alone, and some short surahs, like prayers, may be short because of their genre rather than their date.
+
+### Names of God: Dost's three phases
+
+Prof. Dost (*Before the Qur'an*, 2026, chapter 3) takes Sinai's verse-length ordering and asks what the text calls God along it. He finds three phases:
+
+- **R-Qur'an**: the earliest surahs call God *Rabb*, "your Lord" or "Lord of the worlds". The name *Allāh* is essentially absent. Where it does appear, it is usually in a verse that looks like a later addition, for example because it is much longer than its neighbours or breaks the rhyme.
+- **AR-Qur'an**: for a short time *al-Raḥmān*, "the Merciful", is used as God's proper name (surah 19 uses it sixteen times). Then *Allāh* and *Rabb* appear about equally often.
+- **A-Qur'an**: *Allāh* dominates, roughly once per verse or more. These are approximately the traditional Medinan surahs.
+
+He then uses inscriptions to explain the shift: *Raḥmānān* was the name of God in Jewish and Christian inscriptions from South Arabia, while *Allāh* had a longer history in the north. Notebook 5 checks his counts and his rules, and asks whether other words change at the same boundaries.
 
 ### The sceptics
 
@@ -83,6 +93,8 @@ The details are in `results.md`. In brief:
 4. **Fine-grained order is much shakier.** Inside Nöldeke's periods, the independent measures agree with his order only patchily. This matches the scholars' own caution that these methods give a coarse chronology, not a precise one.
 5. **The tradition's single-verse exceptions get only weak support** from the models (AUC about 0.6).
 6. **English translation works about as well as Arabic** for these coarse distinctions.
+7. **Dost's three phases are more than naming habits.** With *Allāh*, *Rabb* and *al-Raḥmān* removed, a model still puts about 90% of surahs in Dost's phase from their other words. His "one *Allāh* per verse" rule cleanly separates his AR and A phases: no AR surah reaches it, and 19 of the 23 A surahs do.
+8. **Two, three or four stages?** Measured by particle use (small grammatical words none of the schemes was built from), the biggest break falls *early*, between the earliest surahs (Nöldeke's Meccan I, Dost's R-Qur'an) and everything after, not at the move to Medina. Content vocabulary, on the other hand, marks the Meccan/Medinan divide very clearly. One way to put it: the hijra shows up in *what* the text talks about more than in *how* it talks. Three-stage schemes (Dost's, or Nöldeke's with Meccan II and III merged) beat the traditional two-stage one; whether Nöldeke's fourth stage is worth its extra complexity depends on which surahs you include.
 
 ## 6. Using the repository
 
@@ -103,6 +115,8 @@ Open the `notebooks/` folder in Jupyter and work through:
 2. **`02_classifying.ipynb`**: building and testing classifiers, leakage, which evidence matters, and the surahs where models and tradition disagree.
 3. **`03_beyond_binary.ipynb`**: chronology without labels, the four periods, and long surahs cut into blocks.
 4. **`04_neural_embeddings.ipynb`**: optional. Needs a 1.5 GB extra install: `uv sync --extra transformers`.
+5. **`05_divine_names.ipynb`**: Prof. Dost's three phases. Checking his counts, his rules and his proposed insertions.
+6. **`06_comparing_periodizations.ipynb`**: two, three or four stages? Comparing the competing schemes fairly.
 
 Each notebook has questions in bold. Several ask you to read passages in English (https://quran.com is convenient) and come to your own judgement. The code points you to the interesting places; deciding what they mean is your job.
 
@@ -113,6 +127,7 @@ Read the last line of the error first; it usually names the problem. "No module 
 ## 7. Glossary
 
 - **Āya / āyāt**: verse / verses of the Qur'an.
+- **BIC (Bayesian information criterion)**: a score for comparing statistical models that rewards fit and penalises complexity; lower is better.
 - **AUC**: a score from 0.5 (guessing) to 1.0 (perfect) for how well a model ranks one class above another.
 - **Balanced accuracy**: the average of the percentage of each class correctly identified. Guessing the majority class scores 0.5.
 - **Basmala**: the formula "In the name of God, the Merciful, the Compassionate", which opens every surah but one.
@@ -135,5 +150,5 @@ Read the last line of the error first; it usually names the problem. "No module 
 - Nicolai Sinai, *The Qur'an: A Historical-Critical Introduction* (Edinburgh University Press, 2017), chapter 5, "Inner-Qur'anic Chronology". The best single starting point.
 - Behnam Sadeghi, "The Chronology of the Qurʾān: A Stylometric Research Program," *Arabica* 58 (2011): 210–299. Demanding but foundational.
 - Gabriel Said Reynolds, "Le problème de la chronologie du Coran," *Arabica* 58 (2011): 477–502. The sceptical case (in French).
-- Suleyman Dost, *Before the Qur'an: Material Sources at the Advent of Muslim Scripture* (Edinburgh University Press, 2026). Prof. Dost's book on the Qur'an's Arabian setting as seen through inscriptions; chapter 3, "From Rabb to Allāh," concerns the divine names his chronology project tracks.
+- Suleyman Dost, *Before the Qur'an: Material Sources at the Advent of Muslim Scripture* (Edinburgh University Press, 2026). Prof. Dost's book on the Qur'an's Arabian setting as seen through inscriptions. Chapter 3, "From Rabb to Allāh," is his chronology of the three phases; read it alongside notebook 5.
 - Seyyed Hossein Nasr et al., eds., *The Study Quran* (HarperOne, 2015). An English translation whose introductions to each surah summarise what Islamic tradition says about where and when it was revealed.

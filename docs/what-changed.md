@@ -7,7 +7,7 @@ The original project, by Abubakar Abid (January 2017; files in `legacy/`), asked
 | 2017 | 2026 |
 |---|---|
 | The Meccan/Medinan labels are the right answers; disagreements are model errors. | The labels are scholarly claims. Two traditions are loaded side by side: the 1924 Cairo edition, which draws on early Islamic lists, and Nöldeke–Schwally's four periods. Where a model disagrees with a label, that is a question to investigate. |
-| Binary only. | Binary, four-period (Nöldeke) and continuous rank (Spearman correlation with chronological orders). |
+| Binary only. | Binary; Dost's three divine-name phases; Nöldeke's four periods; continuous rank (Spearman correlation with chronological orders); and a head-to-head comparison of 2-, 3- and 4-stage schemes. |
 | Supervised only. | Also unsupervised (PCA of common-lemma frequencies), following Sadeghi's argument that independent stylistic measures should agree with each other if a real chronological signal exists. |
 | No reference to scholarship. | `docs/state-of-the-field.md` surveys Nöldeke, Bazargan, Neuwirth, Sadeghi, Sinai, Farrin, the sceptical critiques (Reynolds, Stefanidis, Shoemaker, Dye, Tesei), Dost's project and the computational literature, with verified citations. |
 

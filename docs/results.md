@@ -30,7 +30,7 @@ Each feature set is fed to the same class-balanced logistic regression.
 |---|---|---|---|---|
 | Always "Meccan" | 0.50 | 0.50 | 0.50 | 0.50 |
 | Verse length only (3 numbers) | 0.77 | 0.90 | 0.81 | 0.94 |
-| Style: length, rhyme, divine names, forms of address | 0.77 | 0.89 | 0.78 | 0.92 |
+| Style: length, rhyme, divine names, forms of address | 0.81 | 0.92 | 0.83 | 0.96 |
 | Arabic words (the 2017 features) | 0.85 | 0.92 | 0.89 | 0.995 |
 | Lemmas | 0.85 | 0.91 | 0.89 | 0.996 |
 | Roots | 0.83 | 0.92 | 0.87 | 1.000 |
@@ -63,7 +63,7 @@ The Cairo tradition lists 148 verses in 33 Meccan surahs as Medinan exceptions (
 | Features | AUC (exception vs ordinary verses, same surahs) |
 |---|---|
 | Length only | 0.54 |
-| Style | 0.55 |
+| Style | 0.56 |
 | Lemmas | 0.61 |
 | Character n-grams | 0.61 |
 | CAMeLBERT-CA | 0.61 |
@@ -105,3 +105,46 @@ A lemma model trained on Nöldeke's four periods, evaluated per surah:
 | Medinan (24) | 1 | 0 | 0 | 23 |
 
 Nearly all the errors fall in a neighbouring period, and most of them sit on the Meccan I/II boundary. That is consistent with the text changing gradually rather than in four sharp steps, which is how Sinai describes it.
+
+## 7. Dost's three phases (`divine_names_by_surah.csv`, `dost_phase_confusion.csv`, `figures/dost_allah_per_verse.png`)
+
+Dost (*Before the Qur'an*, 2026, ch. 3) divides the surahs into an R-Qur'an (God called *Rabb-X*), an AR-Qur'an (*al-Raḥmān*, then *Allāh* and *Rabb-X* together) and an A-Qur'an (*Allāh* dominant), along Sinai's MVL ordering. Our coding of his phases (44 R, 45 AR, 23 A, with 1 and 112 unassigned) is in `data/dost_phases.csv`.
+
+- **Our MVL vs Sinai's ranking:** Spearman's rho = 0.97, even though Sinai counts transliterated letters and removes interpolations.
+- **Divine-name counts** match Dost's footnotes, e.g. surah 4: *Allāh* 229, *Rabb* 6; surah 9: 169 against his 168.
+- **Absence of *Allāh* in the R-Qur'an:** after removing Sinai's 40 interpolated verses, 12 of the 44 R surahs still contain *Allāh* (one to three times each). Dost argues on further grounds (rhyme, glosses, Bell's proposals) that most of these are insertions too. The repository does not encode those further exclusions.
+- **"One *Allāh* per verse" rule:** none of the 45 AR surahs reaches it; 19 of the 23 A surahs do. Of the four that don't, 2 and 22 are just below (0.99, 0.96), and 47 and 110 are well below (about 0.7); Dost assigns those two to the A-Qur'an on other grounds.
+- **Phases without the names:** a lemma model with *Allāh*, *rabb* and *al-Raḥmān* deleted puts 101 of 112 surahs in Dost's phase (grouped cross-validation, surah held out). Most misses are short surahs on the R/AR boundary (52, 54, 55, 68, 106, 109, 113, 114). So the phases mark a broader change in vocabulary, not just in naming.
+
+Compared with Nöldeke, R ≈ Meccan I (43 of 44), AR ≈ Meccan II + III (41 of 45), A = Nöldeke's Medinan surahs minus 98. Like Nöldeke, Dost treats all four Cairo/Nöldeke disputes (13, 55, 76, 99) as non-Medinan.
+
+## 8. Two, three or four stages? (`periodization_comparison.csv`, `periodization_predictability.csv`, `periodization_agreement.csv`)
+
+The schemes compared: Cairo (2 stages); Nöldeke collapsed to Meccan/Medinan (2); Nöldeke's Meccan I vs the rest (2); Dost's R vs the rest (2); Dost (3); Nöldeke with Meccan II + III merged (3, the same shape as Farrin 2019, whose surah list we don't have yet); Nöldeke (4); and data-driven "best cuts" of the MVL ranking into 2–5 stages. The 112 surahs that every scheme assigns (all except 1 and 112, which Dost leaves unplaced) are scored on the same features.
+
+**Feature space.** Every scheme was built partly from verse length or divine names, so they are judged on something none of them used: the frequencies of the 60 commonest particles (prepositions, conjunctions, negations, the article, attached pronouns), with divine names removed, reduced to 8 principal components.
+
+**Scores.** ΔBIC is a penalised fit (lower is better; 0 = best; differences over 10 count as strong). R² is the share of variation explained by the stages. z is how far the scheme beats random groupings of the same sizes.
+
+| Scheme | k | ΔBIC (all surahs) | R² | z vs random | ΔBIC (surahs ≥ 100 words) |
+|---|---|---|---|---|---|
+| Best MVL cut | 2 | **0** | 0.06 | 12.7 | **0** |
+| Nöldeke Meccan I vs rest | 2 | 8.6 | 0.05 | 11.0 | 17.9 |
+| Dost R vs rest | 2 | 9.8 | 0.05 | 10.9 | 11.6 |
+| No chronology | 1 | 23.8 | 0 | — | 26.7 |
+| Best MVL cut | 3 | 27.1 | 0.07 | 9.7 | 17.3 |
+| Nöldeke, II+III merged | 3 | 27.5 | 0.07 | 9.7 | 26.7 |
+| Dost | 3 | 29.3 | 0.07 | 9.8 | 23.0 |
+| Nöldeke | 4 | 39.7 | 0.10 | 11.1 | 24.9 |
+| Nöldeke Meccan/Medinan | 2 | 39.8 | 0.02 | 3.6 | 28.9 |
+| Cairo | 2 | 41.7 | 0.02 | 3.1 | 30.8 |
+
+What this shows:
+
+1. **The biggest stylistic break is early, not at the hijra.** The best 2-stage cut of the MVL ranking puts 47 of Nöldeke's 48 Meccan I surahs (and 43 of Dost's 44 R surahs) on one side. Nöldeke's and Dost's own "earliest vs rest" splits come next. The Meccan/Medinan splits explain only about 2% of the variation in particle use and barely beat random groupings (z ≈ 3). Among surahs of 100+ words, they fit worse than no chronology at all once BIC's complexity penalty is applied.
+2. **Three stages beat the traditional two.** Dost's scheme, Nöldeke's merged to three, and the 3-way MVL cut all clearly outperform both Meccan/Medinan schemes.
+3. **Nöldeke's fourth stage is a close call.** Over all surahs, splitting Meccan II from III doesn't pay BIC's price. Among the longer surahs, where particle frequencies are measured more reliably, Nöldeke's four stages edge ahead of his three. Dost's three stages do better than both there.
+4. **Content vocabulary tells a different story.** Predicting each scheme's stages from all lemmas except divine names (held-out surahs, chance-corrected weighted kappa), the Meccan/Medinan split is the *easiest* to recover (Nöldeke 2-stage κ = 0.95; Nöldeke 4-stage 0.92; Dost 0.87; Cairo 0.87). Themes such as fighting, hypocrites and law mark the hijra clearly. Particle style marks the early break.
+5. **Circularity check.** Scored on verse length alone, the MVL cuts win overwhelmingly, as they must, because they were built from it. This is why the main comparison uses particles.
+
+Caveats: the BIC model is simple (stage means, one shared diagonal variance on 8 components); short surahs give noisy particle frequencies; and "best fit to style" is not the same as "historically correct". A real historical break, such as the move to Medina, could change what the text discusses without changing its grammar.

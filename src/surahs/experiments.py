@@ -219,6 +219,26 @@ def fig_surah_proba(s: pd.DataFrame, p: pd.Series, title: str, fname: str):
     plt.close(fig)
 
 
+def fig_divine_names(dt: pd.DataFrame):
+    """Allāh per verse along Sinai's MVL order, coloured by Dost's phase (his Figure 3.5, extended)."""
+    styles = {"R": dict(color="#86b6ef", marker="o"), "AR": dict(color="#2a78d6", marker="s"),
+              "A": dict(color="#eb6834", marker="^"), "unassigned": dict(color="#8a8984", marker="x")}
+    names = {"R": "R-Qur'an", "AR": "AR-Qur'an", "A": "A-Qur'an", "unassigned": "unassigned (1, 112)"}
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+    for ph, st in styles.items():
+        g = dt[dt.dost_phase.astype(str) == ph]
+        ax.scatter(g.sinai_mvl_rank, g.allah_per_verse, s=30, edgecolor="white", linewidth=0.6, label=names[ph], **st)
+    ax.axhline(1.0, color="#8a8984", lw=1, ls="--")
+    ax.set_xlabel("Rank by mean verse length (Sinai; 1 = shortest verses)")
+    ax.set_ylabel("Allāh per verse (Sinai's insertions removed)")
+    ax.set_title("Dost's phases: Allāh is absent early and dominant late")
+    style_axes(ax)
+    ax.legend(frameon=False, loc="upper left")
+    fig.tight_layout()
+    fig.savefig(FIGS / "dost_allah_per_verse.png", dpi=150)
+    plt.close(fig)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--bert", action="store_true", help="also evaluate CAMeLBERT-CA embeddings")
@@ -281,7 +301,38 @@ def main(argv=None):
     fig_mvl(s)
     fig_pca(scores)
 
-    print("6. Most informative lemmas")
+    print("6. Divine names and Dost's three phases")
+    from surahs import divine_names as dn
+
+    dt = dn.divine_name_table(exclude_interpolations=True)
+    dt.to_csv(RESULTS / "divine_names_by_surah.csv")
+    pd.Series(dn.mvl_agreement()).to_csv(RESULTS / "mvl_vs_sinai.csv")
+    r_with_allah = dn.check_r_qurans_lack_allah(dt)
+    r_with_allah.to_csv(RESULTS / "dost_R_surahs_with_allah.csv")
+    print(f"   our MVL vs Sinai's ranking: rho = {dn.mvl_agreement()['spearman_rho']:.3f}")
+    print(f"   R-Qur'an surahs still containing Allah after Sinai's interpolations: {len(r_with_allah)} of 44")
+    print(dn.allah_threshold_check(dt).to_string())
+    ph, phcm = dn.phase_classifier(remove_divine_names=True)
+    ph.to_csv(RESULTS / "dost_phase_predictions.csv")
+    phcm.to_csv(RESULTS / "dost_phase_confusion.csv")
+    print(phcm.to_string())
+    fig_divine_names(dt)
+
+    print("7. Comparing periodizations (2, 3, 4 stages)")
+    from surahs import periodizations as pz
+
+    comp = pd.concat([
+        pz.compare_schemes(pz.feature_space("function_words")).assign(features="function words, all surahs"),
+        pz.compare_schemes(pz.feature_space("function_words", min_words=100)).assign(features="function words, surahs >= 100 words"),
+        pz.compare_schemes(pz.feature_space("mvl")).assign(features="log MVL only (circular)"),
+    ])
+    comp.to_csv(RESULTS / "periodization_comparison.csv", index=False)
+    print(comp[comp.features == "function words, all surahs"][["scheme", "k", "delta_bic", "r2", "z_vs_random"]].round(2).to_string())
+    pr = pz.predictability()
+    pr.to_csv(RESULTS / "periodization_predictability.csv", index=False)
+    pz.agreement_matrix().to_csv(RESULTS / "periodization_agreement.csv")
+
+    print("8. Most informative lemmas")
     interpret(v).to_csv(RESULTS / "top_lemmas.csv", index=False)
     print(f"done; see {RESULTS}")
 

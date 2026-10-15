@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import gzip
 import re
+import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
@@ -40,8 +41,24 @@ NOLDEKE_PERIODS = [
 ]
 PERIOD_ORDER = [p for p, _, _ in NOLDEKE_PERIODS]
 
+# Dost, Before the Qur'an (2026), ch. 3: R-Qur'an (God is "Rabb-X", "your
+# Lord"), AR-Qur'an (al-Rahman interlude, then Allah and Rabb-X about equal),
+# A-Qur'an (Allah dominant, roughly one per verse or more).
+DOST_PHASES = ["R", "AR", "A", "unassigned"]
+
 # Arabic letters only (no diacritics, no spaces); used to count verse length.
 _ARABIC_LETTER = re.compile(r"[ء-غف-يٱ]")
+
+
+def normalize(s: str) -> str:
+    """Unicode NFC normalisation for Arabic strings.
+
+    Vowel marks can be stored in either order: the corpus writes shadda
+    then fatha, a keyboard usually produces fatha then shadda. The two look
+    identical but compare unequal, so every lemma and root, and every lemma
+    we search for, goes through this function.
+    """
+    return unicodedata.normalize("NFC", s)
 
 
 def noldeke_period(order: int) -> str:
@@ -65,10 +82,18 @@ def load_surahs() -> pd.DataFrame:
     noldeke_period : "Meccan I", "Meccan II", "Meccan III" or "Medinan"
     noldeke_place : "Meccan" or "Medinan", collapsing Nöldeke's three Meccan periods
     labels_disagree : True where Cairo and Nöldeke put the surah in different cities
+    sinai_mvl_rank : rank (1-114) by Sinai's mean verse length, with his
+        suspected interpolations removed (Sinai 2017, pp. 114-17, as
+        reproduced in Dost 2026, Table 3.1)
+    dost_phase : "R", "AR", "A" or "unassigned", our coding of the three
+        phases Dost (2026, ch. 3) defines by divine names; see data/SOURCES.md
+    dost_note : Dost's remarks on individual surahs, paraphrased
     """
     df = pd.read_csv(DATA / "surahs.csv", index_col="surah")
     df["noldeke_period"] = pd.Categorical(df["noldeke_period"], categories=PERIOD_ORDER, ordered=True)
-    return df
+    dost = pd.read_csv(DATA / "dost_phases.csv", index_col="surah").fillna({"dost_note": ""})
+    dost["dost_phase"] = pd.Categorical(dost["dost_phase"], categories=DOST_PHASES, ordered=False)
+    return df.join(dost)
 
 
 def _read_tanzil(path: Path) -> pd.DataFrame:
@@ -137,14 +162,29 @@ def load_verse_exceptions() -> pd.DataFrame:
     Notes that name a place *between* Mecca and Medina (Juhfa, Mina, Arafat,
     the Hijra journey) are not coded as exceptions; see data/SOURCES.md.
     """
-    ex = pd.read_csv(DATA / "verse_exceptions.csv")
+    ex = _expand_ranges(DATA / "verse_exceptions.csv", value_cols=("place",))
+    return ex.rename(columns={"place": "exception_place"})
+
+
+def _expand_ranges(path: Path, value_cols=()) -> pd.DataFrame:
+    """Expand rows like ``73, "10;11;20"`` or ``68, "17-33;48-50"`` to one row per verse."""
     rows = []
-    for r in ex.itertuples():
-        for part in r.ayahs.split(";"):
+    for r in pd.read_csv(path).itertuples(index=False):
+        d = r._asdict()
+        for part in str(d["ayahs"]).split(";"):
             lo, _, hi = part.partition("-")
             for a in range(int(lo), int(hi or lo) + 1):
-                rows.append((r.surah, a, r.place))
-    return pd.DataFrame(rows, columns=["surah", "ayah", "exception_place"])
+                rows.append({"surah": d["surah"], "ayah": a, **{c: d[c] for c in value_cols}})
+    return pd.DataFrame(rows, columns=["surah", "ayah", *value_cols])
+
+
+@lru_cache(maxsize=1)
+def load_sinai_interpolations() -> pd.DataFrame:
+    """Verses Sinai (2017, pp. 114-17) treats as later insertions into short-verse surahs.
+
+    List as given in Dost (2026), ch. 3 n. 7. One row per verse.
+    """
+    return _expand_ranges(DATA / "sinai_interpolations.csv")
 
 
 @lru_cache(maxsize=1)
@@ -165,9 +205,9 @@ def load_morphology() -> pd.DataFrame:
             parts = feats.split("|")
             for p in parts:
                 if p.startswith("LEM:"):
-                    lemma = p[4:]
+                    lemma = normalize(p[4:])
                 elif p.startswith("ROOT:"):
-                    root = p[5:]
+                    root = normalize(p[5:])
             is_affix = "PREF" in parts or "SUFF" in parts
             rows.append((s, a, w, g, form, tag, lemma, root, is_affix))
     return pd.DataFrame(
@@ -191,6 +231,7 @@ def load_verses() -> pd.DataFrame:
     plus every column from :func:`load_surahs`, copied down to each verse, and
     is_exception : True if the Cairo tradition assigns this verse to the other city
     cairo_place_verse : the Cairo label with those verse-level exceptions applied
+    is_sinai_interpolation : True for verses Sinai sets aside as later insertions
     """
     ar = _read_tanzil(RAW / "tanzil-quran-simple-clean.txt")
     ar["text"] = [strip_basmala(s, a, t) for s, a, t in zip(ar.surah, ar.ayah, ar.text)]
@@ -210,6 +251,9 @@ def load_verses() -> pd.DataFrame:
     v["is_exception"] = v["exception_place"].notna()
     v["cairo_place_verse"] = v["exception_place"].fillna(v["cairo_place"])
     v = v.drop(columns="exception_place")
+    interp = load_sinai_interpolations().assign(is_sinai_interpolation=True)
+    v = v.merge(interp, on=["surah", "ayah"], how="left", validate="one_to_one")
+    v["is_sinai_interpolation"] = v["is_sinai_interpolation"].fillna(False).astype(bool)
     v.insert(0, "ref", v["surah"].astype(str) + ":" + v["ayah"].astype(str))
     return v
 

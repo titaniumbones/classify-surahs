@@ -48,3 +48,23 @@ def test_verse_exceptions():
     assert v.loc["73:19", "cairo_place_verse"] == "Meccan"
     assert v.loc["8:30", "cairo_place_verse"] == "Meccan"
     assert v.loc["107:4", "cairo_place_verse"] == "Medinan"
+
+
+def test_divine_name_counts():
+    """Guards against Unicode mismatches: these must match standard concordance counts."""
+    from surahs import load_morphology
+    from surahs.features import DIVINE_NAMES
+
+    counts = load_morphology().lemma.value_counts()
+    assert counts[DIVINE_NAMES["allah"]] > 2600  # c. 2,699
+    assert counts[DIVINE_NAMES["rabb"]] > 900  # c. 975
+    assert counts[DIVINE_NAMES["rahman"]] > 50  # 57 incl. the basmala of 1:1
+
+
+def test_dost_and_sinai():
+    s = load_surahs()
+    assert sorted(s.sinai_mvl_rank) == list(range(1, 115))
+    assert s.dost_phase.value_counts().to_dict() == {"AR": 45, "R": 44, "A": 23, "unassigned": 2}
+    v = load_verses().set_index("ref")
+    assert v.is_sinai_interpolation.sum() == 40  # 15 surahs
+    assert v.loc["73:20", "is_sinai_interpolation"]

@@ -17,6 +17,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import FunctionTransformer, make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+from surahs.data import normalize
+
 # --- hand-picked markers -----------------------------------------------------
 # Each entry is (name, lemma). Lemmas are from the Quranic Arabic Corpus.
 # The three divine names are among the variables in Dost's project and have a
@@ -35,6 +37,8 @@ ADDRESS_FORMULAE = {
     "ya_ayyuha_alladhina_amanu": "يا أيها الذين آمنوا",
     "ya_ayyuha_al_nas": "يا أيها الناس",
 }
+
+DIVINE_NAMES = {k: normalize(v) for k, v in DIVINE_NAMES.items()}
 
 STYLE_NUMERIC = (
     ["log_letters", "log_words", "letters_per_word"]

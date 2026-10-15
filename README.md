@@ -14,9 +14,9 @@ It was built for **HCSB03H3 (Historical Research Methods), University of Toronto
 | `docs/state-of-the-field.md` | A cited survey of scholarship on dating the surahs, from Nöldeke to Sinai, Sadeghi, the sceptics, Dost's project and the computational literature. |
 | `docs/results.md` | What the experiments found, with all the numbers. |
 | `docs/what-changed.md` | How and why this differs from the 2017 version. |
-| `notebooks/` | Four teaching notebooks with questions, to be worked through in order. |
+| `notebooks/` | Six teaching notebooks with questions, to be worked through in order. |
 | `src/surahs/` | The Python package the notebooks use: data loading, features, models, chronology. |
-| `data/` | The Qur'an text (Arabic and English), surah metadata, both chronologies and the verse-level exceptions. Sources and licences are in `data/SOURCES.md`. |
+| `data/` | The Qur'an text (Arabic and English), surah metadata, the Cairo, Nöldeke and Dost chronologies, Sinai's MVL ranking and interpolations, and the verse-level exceptions. Sources and licences are in `data/SOURCES.md`. |
 | `results/` | Tables and figures produced by `uv run surahs-experiments`. |
 | `legacy/` | The 2017 notebook and data. |
 
@@ -47,6 +47,8 @@ To rebuild `data/surahs.csv` from the raw sources: `uv run scripts/build_surah_t
 - A model that knows only how long each verse is separates Meccan from Medinan surahs with an AUC of 0.90. Vocabulary models add little on top of that at the surah level.
 - Every model agrees with Nöldeke's dating better than with the Cairo edition's. The difference comes almost entirely from four surahs (13, 55, 76, 99). The 2017 version reported those as model errors. In fact the model was agreeing with Nöldeke.
 - With no labels at all, the frequencies of the 100 commonest lemmas order the surahs much as Nöldeke did (Spearman's rho 0.91). Within his periods the agreement is weak, so these methods support only a coarse chronology.
+- Prof. Dost's three divine-name phases (*Before the Qur'an*, ch. 3) hold up: with the divine names deleted, other vocabulary still puts about 90% of surahs in his phase.
+- Comparing 2-, 3- and 4-stage schemes on particle use, the sharpest break falls between the earliest surahs and the rest, not at the hijra. Three-stage schemes beat the traditional Meccan/Medinan split.
 
 See `docs/results.md` for details and caveats.
 

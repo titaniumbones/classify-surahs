@@ -27,6 +27,12 @@ The verse-level exceptions from the "Note" column of `raw/tanzil-revelation-orde
 - "Except the last three verses" (16) → 126–128; "Except last two verses" (9) → 128–129; "Only 1-3 from Mecca; the rest from Medina" (107) → 4–7 Medinan.
 - Notes naming a place on the way or outside both cities (28:85 at Juhfa during the hijra; 47:13 during the hijra; 22:52–55 between Mecca and Medina; 2:281 at Mina; 5:3 at Arafat; 48 and 110 on journeys) are **not** coded as exceptions, because they don't move a verse from one period to the other.
 
+## `dost_phases.csv` and `sinai_interpolations.csv` — hand-coded from scholarship
+
+- `sinai_mvl_rank`: each surah's position (1–114) in Sinai's list of surahs ordered by mean verse length, with his proposed interpolations removed. Source: Sinai, *The Qur'an: A Historical-Critical Introduction* (2017), pp. 114–17, as reproduced in Dost, *Before the Qur'an* (2026), Table 3.1, p. 68.
+- `dost_phase`: **our** coding of the three phases Dost describes in prose in ch. 3 (pp. 67–80). R-Qur'an = the first 41 surahs of Sinai's list minus Q 1 and 112, plus Q 54, 68, 69, 70, 73 (his Figure 3.2 caption). A-Qur'an = Sinai ranks 94–114 minus Q 6, 13, 35, 46 (his fn. 30 and Figure 3.5), plus Q 22, 47, 61, 62, 64 (fn. 30) and Q 110 (fn. 41); this reproduces exactly the 22 surahs listed in his fns. 34–35, plus 110. AR-Qur'an = everything else. Q 1 and 112 are left unassigned, as he leaves them. Some surahs fall into a phase only by their MVL position and are not discussed by Dost (e.g. Q 98). `dost_note` paraphrases his remarks on individual surahs. Please check the coding against the book before relying on it.
+- `sinai_interpolations.csv`: the verses Sinai treats as later insertions, as listed in Dost, ch. 3 n. 7 (40 verses in 15 surahs).
+
 ## `surahs.csv` — built from the above
 
 Built by `uv run scripts/build_surah_table.py`. The script checks that the Wikipedia table's Cairo order matches Tanzil's exactly (it does, for all 114 surahs) and that Nöldeke's ranks are a permutation of 1–114. Nöldeke's ranks are divided into his four periods: Meccan I = ranks 1–48, Meccan II = 49–69, Meccan III = 70–90, Medinan = 91–114.
