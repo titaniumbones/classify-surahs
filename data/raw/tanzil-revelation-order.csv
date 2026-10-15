@@ -1,0 +1,115 @@
+tanzil_order,name,surah,type,note
+1,Al-Alaq,96,Meccan,
+2,Al-Qalam,68,Meccan,"Except 17-33 and 48-50, from Medina"
+3,Al-Muzzammil,73,Meccan,"Except 10, 11 and 20, from Medina"
+4,Al-Muddaththir,74,Meccan,
+5,Al-Faatiha,1,Meccan,
+6,Al-Masad,111,Meccan,
+7,At-Takwir,81,Meccan,
+8,Al-A'laa,87,Meccan,
+9,Al-Lail,92,Meccan,
+10,Al-Fajr,89,Meccan,
+11,Ad-Dhuhaa,93,Meccan,
+12,Ash-Sharh,94,Meccan,
+13,Al-Asr,103,Meccan,
+14,Al-Aadiyaat,100,Meccan,
+15,Al-Kawthar,108,Meccan,
+16,At-Takaathur,102,Meccan,
+17,Al-Maa'un,107,Meccan,Only 1-3 from Mecca; the rest from Medina
+18,Al-Kaafiroon,109,Meccan,
+19,Al-Fil,105,Meccan,
+20,Al-Falaq,113,Meccan,
+21,An-Naas,114,Meccan,
+22,Al-Ikhlaas,112,Meccan,
+23,An-Najm,53,Meccan,"Except 32, from Medina"
+24,Abasa,80,Meccan,
+25,Al-Qadr,97,Meccan,
+26,Ash-Shams,91,Meccan,
+27,Al-Burooj,85,Meccan,
+28,At-Tin,95,Meccan,
+29,Quraish,106,Meccan,
+30,Al-Qaari'a,101,Meccan,
+31,Al-Qiyaama,75,Meccan,
+32,Al-Humaza,104,Meccan,
+33,Al-Mursalaat,77,Meccan,"Except 48, from Medina"
+34,Qaaf,50,Meccan,"Except 38, from Medina"
+35,Al-Balad,90,Meccan,
+36,At-Taariq,86,Meccan,
+37,Al-Qamar,54,Meccan,"Except 44-46, from Medina"
+38,Saad,38,Meccan,
+39,Al-A'raaf,7,Meccan,"Except 163-170, from Medina"
+40,Al-Jinn,72,Meccan,
+41,Yaseen,36,Meccan,"Except 45, from Medina"
+42,Al-Furqaan,25,Meccan,"Except 68-70, from Medina"
+43,Faatir,35,Meccan,
+44,Maryam,19,Meccan,"Except 58 and 71, from Medina"
+45,Taa-Haa,20,Meccan,"Except 130 and 131, from Medina"
+46,Al-Waaqia,56,Meccan,"Except 81 and 82, from Medina"
+47,Ash-Shu'araa,26,Meccan,"Except 197 and 224-227, from Medina"
+48,An-Naml,27,Meccan,
+49,Al-Qasas,28,Meccan,Except 52-55 from Medina and 85 from Juhfa at the time of the Hijra
+50,Al-Israa,17,Meccan,"Except 26, 32, 33, 57, 73-80, from Medina"
+51,Yunus,10,Meccan,"Except 40, 94, 95, 96, from Medina"
+52,Hud,11,Meccan,"Except 12, 17, 114, from Medina"
+53,Yusuf,12,Meccan,"Except 1, 2, 3, 7, from Medina"
+54,Al-Hijr,15,Meccan,"Except 87, from Medina"
+55,Al-An'aam,6,Meccan,"Except 20, 23, 91, 93, 114, 151, 152, 153, from Medina"
+56,As-Saaffaat,37,Meccan,
+57,Luqman,31,Meccan,"Except 27-29, from Medina"
+58,Saba,34,Meccan,
+59,Az-Zumar,39,Meccan,
+60,Al-Ghaafir,40,Meccan,"Except 56, 57, from Medina"
+61,Fussilat,41,Meccan,
+62,Ash-Shura,42,Meccan,"Except 23, 24, 25, 27, from Medina"
+63,Az-Zukhruf,43,Meccan,"Except 54, from Medina"
+64,Ad-Dukhaan,44,Meccan,
+65,Al-Jaathiya,45,Meccan,"Except 14, from Medina"
+66,Al-Ahqaf,46,Meccan,"Except 10, 15, 35, from Medina"
+67,Adh-Dhaariyat,51,Meccan,
+68,Al-Ghaashiya,88,Meccan,
+69,Al-Kahf,18,Meccan,"Except 28, 83-101, from Medina"
+70,An-Nahl,16,Meccan,Except the last three verses from Medina
+71,Nooh,71,Meccan,
+72,Ibrahim,14,Meccan,"Except 28, 29, from Medina"
+73,Al-Anbiyaa,21,Meccan,
+74,Al-Muminoon,23,Meccan,
+75,As-Sajda,32,Meccan,"Except 16-20, from Medina"
+76,At-Tur,52,Meccan,
+77,Al-Mulk,67,Meccan,
+78,Al-Haaqqa,69,Meccan,
+79,Al-Ma'aarij,70,Meccan,
+80,An-Naba,78,Meccan,
+81,An-Naazi'aat,79,Meccan,
+82,Al-Infitaar,82,Meccan,
+83,Al-Inshiqaaq,84,Meccan,
+84,Ar-Room,30,Meccan,"Except 17, from Medina"
+85,Al-Ankaboot,29,Meccan,"Except 1-11, from Medina"
+86,Al-Mutaffifin,83,Meccan,
+87,Al-Baqara,2,Medinan,Except 281 from Mina at the time of the Last Hajj
+88,Al-Anfaal,8,Medinan,Except 30-36 from Mecca
+89,Aal-i-Imraan,3,Medinan,
+90,Al-Ahzaab,33,Medinan,
+91,Al-Mumtahana,60,Medinan,
+92,An-Nisaa,4,Medinan,
+93,Az-Zalzala,99,Medinan,
+94,Al-Hadid,57,Medinan,
+95,Muhammad,47,Medinan,"Except 13, revealed during the Prophet's Hijrah"
+96,Ar-Ra'd,13,Medinan,
+97,Ar-Rahmaan,55,Medinan,
+98,Al-Insaan,76,Medinan,
+99,At-Talaaq,65,Medinan,
+100,Al-Bayyina,98,Medinan,
+101,Al-Hashr,59,Medinan,
+102,An-Noor,24,Medinan,
+103,Al-Hajj,22,Medinan,"Except 52-55, revealed between Mecca and Medina"
+104,Al-Munaafiqoon,63,Medinan,
+105,Al-Mujaadila,58,Medinan,
+106,Al-Hujuraat,49,Medinan,
+107,At-Tahrim,66,Medinan,
+108,At-Taghaabun,64,Medinan,
+109,As-Saff,61,Medinan,
+110,Al-Jumu'a,62,Medinan,
+111,Al-Fath,48,Medinan,Revealed while returning from Hudaybiyya
+112,Al-Maaida,5,Medinan,"Except 3, revealed at Arafat on Last Hajj"
+113,At-Tawba,9,Medinan,Except last two verses from Mecca
+114,An-Nasr,110,Medinan,"Revealed at Mina on Last Hajj, but regarded as Medinan sura"

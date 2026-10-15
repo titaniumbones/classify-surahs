@@ -1,0 +1,115 @@
+surah,name_ar,name_translit,name_en,n_verses,cairo_order,cairo_place,noldeke_order,noldeke_period,noldeke_place,labels_disagree
+1,الفاتحة,Al-Faatiha,The Opening,7,5,Meccan,48,Meccan I,Meccan,False
+2,البقرة,Al-Baqara,The Cow,286,87,Medinan,91,Medinan,Medinan,False
+3,آل عمران,Aal-i-Imraan,The Family of Imraan,200,89,Medinan,97,Medinan,Medinan,False
+4,النساء,An-Nisaa,The Women,176,92,Medinan,100,Medinan,Medinan,False
+5,المائدة,Al-Maaida,The Table,120,112,Medinan,114,Medinan,Medinan,False
+6,الأنعام,Al-An'aam,The Cattle,165,55,Meccan,89,Meccan III,Meccan,False
+7,الأعراف,Al-A'raaf,The Heights,206,39,Meccan,87,Meccan III,Meccan,False
+8,الأنفال,Al-Anfaal,The Spoils of War,75,88,Medinan,95,Medinan,Medinan,False
+9,التوبة,At-Tawba,The Repentance,129,113,Medinan,113,Medinan,Medinan,False
+10,يونس,Yunus,Jonas,109,51,Meccan,84,Meccan III,Meccan,False
+11,هود,Hud,Hud,123,52,Meccan,75,Meccan III,Meccan,False
+12,يوسف,Yusuf,Joseph,111,53,Meccan,77,Meccan III,Meccan,False
+13,الرعد,Ar-Ra'd,The Thunder,43,96,Medinan,90,Meccan III,Meccan,True
+14,ابراهيم,Ibrahim,Abraham,52,72,Meccan,76,Meccan III,Meccan,False
+15,الحجر,Al-Hijr,The Rock,99,54,Meccan,57,Meccan II,Meccan,False
+16,النحل,An-Nahl,The Bee,128,70,Meccan,73,Meccan III,Meccan,False
+17,الإسراء,Al-Israa,The Night Journey,111,50,Meccan,67,Meccan II,Meccan,False
+18,الكهف,Al-Kahf,The Cave,110,69,Meccan,69,Meccan II,Meccan,False
+19,مريم,Maryam,Mary,98,44,Meccan,58,Meccan II,Meccan,False
+20,طه,Taa-Haa,Taa-Haa,135,45,Meccan,55,Meccan II,Meccan,False
+21,الأنبياء,Al-Anbiyaa,The Prophets,112,73,Meccan,65,Meccan II,Meccan,False
+22,الحج,Al-Hajj,The Pilgrimage,78,103,Medinan,107,Medinan,Medinan,False
+23,المؤمنون,Al-Muminoon,The Believers,118,74,Meccan,64,Meccan II,Meccan,False
+24,النور,An-Noor,The Light,64,102,Medinan,105,Medinan,Medinan,False
+25,الفرقان,Al-Furqaan,The Criterion,77,42,Meccan,66,Meccan II,Meccan,False
+26,الشعراء,Ash-Shu'araa,The Poets,227,47,Meccan,56,Meccan II,Meccan,False
+27,النمل,An-Naml,The Ant,93,48,Meccan,68,Meccan II,Meccan,False
+28,القصص,Al-Qasas,The Stories,88,49,Meccan,79,Meccan III,Meccan,False
+29,العنكبوت,Al-Ankaboot,The Spider,69,85,Meccan,81,Meccan III,Meccan,False
+30,الروم,Ar-Room,The Romans,60,84,Meccan,74,Meccan III,Meccan,False
+31,لقمان,Luqman,Luqman,34,57,Meccan,82,Meccan III,Meccan,False
+32,السجدة,As-Sajda,The Prostration,30,75,Meccan,70,Meccan III,Meccan,False
+33,الأحزاب,Al-Ahzaab,The Clans,73,90,Medinan,103,Medinan,Medinan,False
+34,سبإ,Saba,Sheba,54,58,Meccan,85,Meccan III,Meccan,False
+35,فاطر,Faatir,The Originator,45,43,Meccan,86,Meccan III,Meccan,False
+36,يس,Yaseen,Yaseen,83,41,Meccan,60,Meccan II,Meccan,False
+37,الصافات,As-Saaffaat,Those drawn up in Ranks,182,56,Meccan,50,Meccan II,Meccan,False
+38,ص,Saad,The letter Saad,88,38,Meccan,59,Meccan II,Meccan,False
+39,الزمر,Az-Zumar,The Groups,75,59,Meccan,80,Meccan III,Meccan,False
+40,غافر,Al-Ghaafir,The Forgiver,85,60,Meccan,78,Meccan III,Meccan,False
+41,فصلت,Fussilat,Explained in detail,54,61,Meccan,71,Meccan III,Meccan,False
+42,الشورى,Ash-Shura,Consultation,53,62,Meccan,83,Meccan III,Meccan,False
+43,الزخرف,Az-Zukhruf,Ornaments of gold,89,63,Meccan,61,Meccan II,Meccan,False
+44,الدخان,Ad-Dukhaan,The Smoke,59,64,Meccan,53,Meccan II,Meccan,False
+45,الجاثية,Al-Jaathiya,Crouching,37,65,Meccan,72,Meccan III,Meccan,False
+46,الأحقاف,Al-Ahqaf,The Dunes,35,66,Meccan,88,Meccan III,Meccan,False
+47,محمد,Muhammad,Muhammad,38,95,Medinan,96,Medinan,Medinan,False
+48,الفتح,Al-Fath,The Victory,29,111,Medinan,108,Medinan,Medinan,False
+49,الحجرات,Al-Hujuraat,The Inner Apartments,18,106,Medinan,112,Medinan,Medinan,False
+50,ق,Qaaf,The letter Qaaf,45,34,Meccan,54,Meccan II,Meccan,False
+51,الذاريات,Adh-Dhaariyat,The Winnowing Winds,60,67,Meccan,39,Meccan I,Meccan,False
+52,الطور,At-Tur,The Mount,49,76,Meccan,40,Meccan I,Meccan,False
+53,النجم,An-Najm,The Star,62,23,Meccan,28,Meccan I,Meccan,False
+54,القمر,Al-Qamar,The Moon,55,37,Meccan,49,Meccan II,Meccan,False
+55,الرحمن,Ar-Rahmaan,The Beneficent,78,97,Medinan,43,Meccan I,Meccan,True
+56,الواقعة,Al-Waaqia,The Inevitable,96,46,Meccan,41,Meccan I,Meccan,False
+57,الحديد,Al-Hadid,The Iron,29,94,Medinan,99,Medinan,Medinan,False
+58,المجادلة,Al-Mujaadila,The Pleading Woman,22,105,Medinan,106,Medinan,Medinan,False
+59,الحشر,Al-Hashr,The Exile,24,101,Medinan,102,Medinan,Medinan,False
+60,الممتحنة,Al-Mumtahana,She that is to be examined,13,91,Medinan,110,Medinan,Medinan,False
+61,الصف,As-Saff,The Ranks,14,109,Medinan,98,Medinan,Medinan,False
+62,الجمعة,Al-Jumu'a,Friday,11,110,Medinan,94,Medinan,Medinan,False
+63,المنافقون,Al-Munaafiqoon,The Hypocrites,11,104,Medinan,104,Medinan,Medinan,False
+64,التغابن,At-Taghaabun,Mutual Disillusion,18,108,Medinan,93,Medinan,Medinan,False
+65,الطلاق,At-Talaaq,Divorce,12,99,Medinan,101,Medinan,Medinan,False
+66,التحريم,At-Tahrim,The Prohibition,12,107,Medinan,109,Medinan,Medinan,False
+67,الملك,Al-Mulk,The Sovereignty,30,77,Meccan,63,Meccan II,Meccan,False
+68,القلم,Al-Qalam,The Pen,52,2,Meccan,18,Meccan I,Meccan,False
+69,الحاقة,Al-Haaqqa,The Reality,52,78,Meccan,38,Meccan I,Meccan,False
+70,المعارج,Al-Ma'aarij,The Ascending Stairways,44,79,Meccan,42,Meccan I,Meccan,False
+71,نوح,Nooh,Noah,28,71,Meccan,51,Meccan II,Meccan,False
+72,الجن,Al-Jinn,The Jinn,28,40,Meccan,62,Meccan II,Meccan,False
+73,المزمل,Al-Muzzammil,The Enshrouded One,20,3,Meccan,23,Meccan I,Meccan,False
+74,المدثر,Al-Muddaththir,The Cloaked One,56,4,Meccan,2,Meccan I,Meccan,False
+75,القيامة,Al-Qiyaama,The Resurrection,40,31,Meccan,36,Meccan I,Meccan,False
+76,الانسان,Al-Insaan,Man,31,98,Medinan,52,Meccan II,Meccan,True
+77,المرسلات,Al-Mursalaat,The Emissaries,50,33,Meccan,32,Meccan I,Meccan,False
+78,النبإ,An-Naba,The Announcement,40,80,Meccan,33,Meccan I,Meccan,False
+79,النازعات,An-Naazi'aat,Those who drag forth,46,81,Meccan,31,Meccan I,Meccan,False
+80,عبس,Abasa,He frowned,42,24,Meccan,17,Meccan I,Meccan,False
+81,التكوير,At-Takwir,The Overthrowing,29,7,Meccan,27,Meccan I,Meccan,False
+82,الإنفطار,Al-Infitaar,The Cleaving,19,82,Meccan,26,Meccan I,Meccan,False
+83,المطففين,Al-Mutaffifin,Defrauding,36,86,Meccan,37,Meccan I,Meccan,False
+84,الإنشقاق,Al-Inshiqaaq,The Splitting Open,25,83,Meccan,29,Meccan I,Meccan,False
+85,البروج,Al-Burooj,The Constellations,22,27,Meccan,22,Meccan I,Meccan,False
+86,الطارق,At-Taariq,The Morning Star,17,36,Meccan,15,Meccan I,Meccan,False
+87,الأعلى,Al-A'laa,The Most High,19,8,Meccan,19,Meccan I,Meccan,False
+88,الغاشية,Al-Ghaashiya,The Overwhelming,26,68,Meccan,34,Meccan I,Meccan,False
+89,الفجر,Al-Fajr,The Dawn,30,10,Meccan,35,Meccan I,Meccan,False
+90,البلد,Al-Balad,The City,20,35,Meccan,11,Meccan I,Meccan,False
+91,الشمس,Ash-Shams,The Sun,15,26,Meccan,16,Meccan I,Meccan,False
+92,الليل,Al-Lail,The Night,21,9,Meccan,10,Meccan I,Meccan,False
+93,الضحى,Ad-Dhuhaa,The Morning Hours,11,11,Meccan,13,Meccan I,Meccan,False
+94,الشرح,Ash-Sharh,The Consolation,8,12,Meccan,12,Meccan I,Meccan,False
+95,التين,At-Tin,The Fig,8,28,Meccan,20,Meccan I,Meccan,False
+96,العلق,Al-Alaq,The Clot,19,1,Meccan,1,Meccan I,Meccan,False
+97,القدر,Al-Qadr,"The Power, Fate",5,25,Meccan,14,Meccan I,Meccan,False
+98,البينة,Al-Bayyina,The Evidence,8,100,Medinan,92,Medinan,Medinan,False
+99,الزلزلة,Az-Zalzala,The Earthquake,8,93,Medinan,25,Meccan I,Meccan,True
+100,العاديات,Al-Aadiyaat,The Chargers,11,14,Meccan,30,Meccan I,Meccan,False
+101,القارعة,Al-Qaari'a,The Calamity,11,30,Meccan,24,Meccan I,Meccan,False
+102,التكاثر,At-Takaathur,Competition,8,16,Meccan,8,Meccan I,Meccan,False
+103,العصر,Al-Asr,"The Declining Day, Epoch",3,13,Meccan,21,Meccan I,Meccan,False
+104,الهمزة,Al-Humaza,The Traducer,9,32,Meccan,6,Meccan I,Meccan,False
+105,الفيل,Al-Fil,The Elephant,5,19,Meccan,9,Meccan I,Meccan,False
+106,قريش,Quraish,Quraysh,4,29,Meccan,4,Meccan I,Meccan,False
+107,الماعون,Al-Maa'un,Almsgiving,7,17,Meccan,7,Meccan I,Meccan,False
+108,الكوثر,Al-Kawthar,Abundance,3,15,Meccan,5,Meccan I,Meccan,False
+109,الكافرون,Al-Kaafiroon,The Disbelievers,6,18,Meccan,45,Meccan I,Meccan,False
+110,النصر,An-Nasr,Divine Support,3,114,Medinan,111,Medinan,Medinan,False
+111,المسد,Al-Masad,The Palm Fibre,5,6,Meccan,3,Meccan I,Meccan,False
+112,الإخلاص,Al-Ikhlaas,Sincerity,4,22,Meccan,44,Meccan I,Meccan,False
+113,الفلق,Al-Falaq,The Dawn,5,20,Meccan,46,Meccan I,Meccan,False
+114,الناس,An-Naas,Mankind,6,21,Meccan,47,Meccan I,Meccan,False

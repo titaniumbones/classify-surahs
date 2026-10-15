@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# surahs v2
+.venv/
+data/cache/
+.ipynb_checkpoints/

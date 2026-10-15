@@ -1,0 +1,43 @@
+[project]
+name = "surahs"
+version = "2.0.0"
+description = "Testing hypotheses about the chronology of the Qur'an's surahs with transparent machine learning"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "scipy>=1.13",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+# Contextual embeddings from a BERT model trained on Classical Arabic.
+# Large download (~1.5 GB with PyTorch); only needed for notebook 04.
+transformers = [
+    "torch>=2.3",
+    "transformers>=4.44",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+    "nbconvert>=7.16",
+    "jupytext>=1.16",
+]
+
+[project.scripts]
+surahs-experiments = "surahs.experiments:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/surahs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

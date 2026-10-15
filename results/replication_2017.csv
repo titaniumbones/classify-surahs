@@ -1,0 +1,24 @@
+setup,seed,accuracy
+2017: one random 40/60 split by surah,0,0.7830776605944392
+2017: one random 40/60 split by surah,1,0.8607011070110702
+2017: one random 40/60 split by surah,2,0.8194911185789726
+2017: one random 40/60 split by surah,3,0.8586562587120156
+2017: one random 40/60 split by surah,4,0.8399401645474944
+2017: one random 40/60 split by surah,5,0.8507027313709892
+2017: one random 40/60 split by surah,6,0.8355335533553355
+2017: one random 40/60 split by surah,7,0.8457142857142858
+2017: one random 40/60 split by surah,8,0.7900049236829149
+2017: one random 40/60 split by surah,9,0.8296278960917388
+2017: one random 40/60 split by surah,10,0.7663355985363304
+2017: one random 40/60 split by surah,11,0.8307140887786049
+2017: one random 40/60 split by surah,12,0.8340124966041836
+2017: one random 40/60 split by surah,13,0.864
+2017: one random 40/60 split by surah,14,0.8197517539125742
+2017: one random 40/60 split by surah,15,0.8365853658536585
+2017: one random 40/60 split by surah,16,0.8305615811038805
+2017: one random 40/60 split by surah,17,0.8915024992649221
+2017: one random 40/60 split by surah,18,0.7941937338315608
+2017: one random 40/60 split by surah,19,0.7820903798170225
+verse-level 5-fold (leaky),0,0.8670622193713919
+surah-grouped 5-fold,0,0.8446119307248237
+always answer 'Meccan',0,0.7397370109044259
